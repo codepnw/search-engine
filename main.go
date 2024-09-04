@@ -8,6 +8,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/codepnw/search-engine/internal/api"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/joho/godotenv"
@@ -32,6 +33,8 @@ func main() {
 	})
 
 	app.Use(compress.New())
+
+	api.NewRoutes(app)
 
 	// Start and Shutdown Server
 	go func() {
