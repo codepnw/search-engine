@@ -10,6 +10,7 @@ import (
 
 	"github.com/codepnw/search-engine/internal/api"
 	"github.com/codepnw/search-engine/internal/db"
+	"github.com/codepnw/search-engine/internal/utils"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/joho/godotenv"
@@ -36,6 +37,7 @@ func main() {
 	app.Use(compress.New())
 	db.InitDB()  // Database
 	api.NewRoutes(app) // API Routes
+	utils.StartCronJobs()  // CronJobs
 
 	// Start and Shutdown Server
 	go func() {
