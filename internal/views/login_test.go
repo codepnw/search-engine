@@ -24,3 +24,4 @@ func TestLoginView(t *testing.T) {
 		t.Error("expected form to be rendered, but it wasn't")
 	}
 }
+ 
