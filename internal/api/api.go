@@ -2,7 +2,6 @@ package api
 
 import (
 	"github.com/a-h/templ"
-	"github.com/codepnw/search-engine/internal/db"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -22,9 +21,11 @@ func NewRoutes(app *fiber.App) {
 	app.Get("/logout", LogoutHandler)
 
 	// Create Admin
-	app.Get("/create", func(c *fiber.Ctx) error {
-		u := &db.User{}
-		u.CreateAdmin()
-		return c.SendString("created")
-	})
+	// app.Get("/create", func(c *fiber.Ctx) error {
+	// 	u := &db.User{}
+	// 	u.CreateAdmin()
+	// 	return c.SendString("created")
+	// })
+
+	app.Post("/search", HandleSearch)
 }
